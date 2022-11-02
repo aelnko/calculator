@@ -18,7 +18,7 @@ buttons.forEach((btn) => {
     } else if (value === '.') {
       result.innerHTML += value;
     } else if (value === '±') {
-      result.innerHTML = result.innerHTML > 0 ? `-${result.innerHTML}` : Number(result.innerHTML) * (-1);
+      result.innerHTML = result.innerHTML > 0 ? `-${result.innerHTML}` : -Number(result.innerHTML);
     } else if (value === '=') {
       switch(operand) {
         case '+': 
