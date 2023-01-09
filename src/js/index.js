@@ -12,13 +12,15 @@ buttons.forEach((btn) => {
   btn.addEventListener('click', () => {
     if (numbers.includes(value)) {
       result.innerHTML = result.innerHTML === '0' ? value : result.innerHTML + value;
-      num2 = num1 === undefined ? undefined : result.innerHTML;
+      num2 = num1 === undefined ? undefined : Number(result.innerHTML);
     } else if (value === 'C') {
       result.innerHTML = '0';
     } else if (value === '.') {
       result.innerHTML += value;
     } else if (value === '±') {
-      result.innerHTML = result.innerHTML > 0 ? `-${result.innerHTML}` : -Number(result.innerHTML);
+      result.innerHTML = result.innerHTML > 0 ? `-${result.innerHTML}` : `${-Number(result.innerHTML)}`;
+    } else if (value === '%') {
+      result.innerHTML = Number(result.innerHTML) * 0.01;
     } else if (value === '=') {
       switch(operand) {
         case '+': 
@@ -26,9 +28,6 @@ buttons.forEach((btn) => {
           break;
         case '-':
           result.innerHTML = Number(num1) - Number(num2);
-          break;
-        case '%':
-          result.innerHTML = Number(num1) % Number(num2);
           break;
         case '÷':
           result.innerHTML = Number(num1) / Number(num2);
